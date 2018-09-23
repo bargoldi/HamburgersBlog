@@ -329,3 +329,268 @@ mul-col-blue container text-center {
     width: 65%;
     padding: 10px;
 }
+
+/*Restaurants*/
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700');
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
+
+* {
+    box-sizing: border-box;
+}
+
+.restaurants {
+    font-family: 'Roboto Slab', serif;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}
+
+.cards {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    display: -webkit-flex;
+    flex-basis: 30%;
+    justify-content: space-between;
+    -webkit-justify-content: center;
+    max-width: 820px;
+}
+
+.card {
+    flex: 1 0 30%;
+    margin-bottom: 30px;
+}
+
+.card__like {
+    width: 18px;
+}
+
+.card__clock {
+    width: 15px;
+    vertical-align: middle;
+    fill: #AD7D52;
+}
+
+.card__time {
+    font-size: 12px;
+    color: #AD7D52;
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+.card__clock-info {
+    float: right;
+}
+
+.card__img {
+    visibility: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 235px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.card__info-hover {
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: space-between;
+    z-index: 9999999;
+    position: absolute;
+    padding: 16px;
+    width: 100%;
+    opacity: 0;
+    top: 0;
+}
+
+.card__img--hover {
+    transition: 0.2s all ease-out;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    position: absolute;
+    height: 235px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    top: 0;
+}
+
+.card {
+    margin-right: 25px;
+    transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
+    background-color: #fff;
+    width: 100%;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0px 13px 10px -7px rgba(0, 0, 0,0.1);
+}
+
+    .card:hover {
+        box-shadow: 0px 30px 18px -8px rgba(0, 0, 0,0.1);
+        transform: scale(1.10, 1.10);
+    }
+
+.card__info {
+    z-index: 2;
+    background-color: #fff;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    padding: 16px 24px 24px 24px;
+}
+
+.card__category {
+    font-family: 'Raleway', sans-serif;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 2px;
+    font-weight: 500;
+    color: #868686;
+}
+
+.card__title {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-family: 'Roboto Slab', serif;
+}
+
+.card__by {
+    font-size: 15px;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 500;
+}
+
+.card__author {
+    font-weight: 600;
+    font-size: 20px;
+    text-decoration: none;
+    color: #AD7D52;
+}
+
+.card:hover .card__img--hover {
+    height: 100%;
+    opacity: 0.3;
+}
+
+.card:hover .card__info {
+    background-color: transparent;
+    position: relative;
+}
+
+.card:hover .card__info-hover {
+    opacity: 1;
+}
+
+.form-inline {
+    margin-bottom: 30px;
+}
+
+.restaurant-card {
+    text-align: center;
+    margin: 20px;
+    display: block;
+    border: 1px dashed black;
+    height: 40vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.restaurant-title {
+    flex: 2;
+    display: flex;
+    flex-direction: row;
+}
+
+.compatible {
+    margin-left: 10px;
+    background-color: transparent;
+    margin-top: -2px;
+}
+
+.compatible-image {
+    width: 5vh;
+    height: 5vh;
+}
+
+/*Restaurant-Details*/
+.burger-view {
+    width: 30%;
+    margin: 0 auto;
+}
+
+.burger-name {
+    text-align: center;
+    text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF;
+}
+
+.burger-image {
+    margin-left: 50%;
+    transform: translateX(-50%);
+    width: 15vw;
+    height: auto;
+    max-height: 20vh;
+}
+
+.burger-description {
+    text-align: center;
+}
+
+.hamburgers-canvas-details {
+    margin-top: 5vh;
+    margin-left: 50%;
+    transform: translateX(-50%);
+}
+
+.restaurant-img {
+    width: 200px
+}
+
+.details-container {
+    margin: 0 36px;
+}
+
+.restaurant-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.reviews-container {
+    margin-top: 40px;
+}
+
+.review-title {
+    margin-top: 30px;
+    margin-bottom: 0;
+    font-size: 30px;
+    font-family: fantasy;
+}
+
+.review-author-name {
+    background: #222;
+    color: #FFF;
+}
+
+.review-content {
+    margin-left: 20px;
+}
+
+.restaurant-image img {
+    width: 100%;
+}
+
+.add-review {
+    background-color: black;
+    color: white;
+    margin-right: 50px;
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: center;
+}

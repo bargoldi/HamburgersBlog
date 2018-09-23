@@ -45,6 +45,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -148,6 +154,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RestaurantsController.cs" />
+    <Compile Include="DAL\ProjectContext.cs" />
+    <Compile Include="DAL\ProjectInitiailizer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -167,6 +176,28 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Media\images\817988.jpg" />
+    <Content Include="Media\images\bbb.jpg" />
+    <Content Include="Media\images\blue and smoked.jpg" />
+    <Content Include="Media\images\butler burger.jpg" />
+    <Content Include="Media\images\butler cheese burger.jpg" />
+    <Content Include="Media\images\cheesy bacon.jpg" />
+    <Content Include="Media\images\croissant.jpg" />
+    <Content Include="Media\images\fini.jpg" />
+    <Content Include="Media\images\gordos.jpg" />
+    <Content Include="Media\images\humongous.jpg" />
+    <Content Include="Media\images\kabana.jpg" />
+    <Content Include="Media\images\kosher.png" />
+    <Content Include="Media\images\parking.png" />
+    <Content Include="Media\images\port19.jpg" />
+    <Content Include="Media\images\prozdor.jpg" />
+    <Content Include="Media\images\royal with cheese.jpg" />
+    <Content Include="Media\images\susu and sons.jpg" />
+    <Content Include="Media\images\susu and sons.png" />
+    <Content Include="Media\images\sweet crabs.jpg" />
+    <Content Include="Media\images\sweet eggs.jpg" />
+    <Content Include="Media\images\thailand.jpg" />
+    <Content Include="Media\images\vegeterian.png" />
+    <Content Include="Media\images\vitrina.jpg" />
     <Content Include="Media\videos\videoblocks-plump-girl-overeating-burger-and-drinking-water-while-riding-exercise-bike_sext_n_cwg__PM.mp4" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -175,6 +206,7 @@
     </Content>
     <Content Include="fonts\Monoton-Regular.ttf" />
     <Content Include="fonts\PoorStory-Regular.ttf" />
+    <Content Include="package.json" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -198,9 +230,13 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Restaurants\Index.cshtml" />
+    <Content Include="Views\Restaurants\Locations.cshtml" />
+    <Content Include="Views\Restaurants\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Restaurant\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

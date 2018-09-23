@@ -22,9 +22,13 @@ namespace HamburgersBlog
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/lightslider-js").Include(
+                        "~/node_modules/lightslider/dist/js/lightslider.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/node_modules/lightslider/dist/css/lightslider.min.css"));
         }
     }
 }

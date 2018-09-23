@@ -1,0 +1,24 @@
+{
+  "name": "hamburgersblog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bargoldi/HamburgersBlog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bargoldi/HamburgersBlog/issues"
+  },
+  "homepage": "https://github.com/bargoldi/HamburgersBlog#readme",
+  "dependencies": {
+    "bootstrap": "^4.1.3",
+    "d3": "^5.7.0",
+    "jquery": "^3.3.1"
+  }
+}

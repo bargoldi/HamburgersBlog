@@ -1,24 +1,331 @@
-﻿body {
-    padding-top: 50px;
+﻿/*Fonts*/
+@font-face {
+    font-family: 'Monoton';
+    src: url('../fonts/Monoton-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'PoorStory';
+    src: url('../fonts/PoorStory-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Hanzo Font';
+    src: url('../media/fonts/Roboto-Medium.ttf') format('truetype');
+}
+
+/*Shared*/
+h1.blog-title {
+    font-family: 'Monoton';
+}
+
+.blog-header {
+    margin-left: 14%;
+    width: 72%;
+    background-repeat: repeat-x;
+    background-position: center;
+    padding-top: 20px;
     padding-bottom: 20px;
+    margin: 0 auto;
+    /*background-image: url('/media/images/melted-cheese.svg');*/
 }
 
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+.blog-header .container {
+    text-align: center
 }
 
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
+.container {
+    max-width: 100%;
+    width: 100%;
 }
 
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+main.container {
+    background-image: url("/Media/images/817988.jpg");
+}
+
+.col-sm-10 {
+    padding: 5vh 0vw
+}
+
+.blog-title {
+    margin-top: 30px;
+    margin-bottom: 0;
+    font-size: 60px;
+    text-align: -webkit-left;
+    font-weight: normal;
+    color: #393b46;
+    transition: font-size 2s;
+    text-shadow: 2px 2px #0c0808;
+}
+
+.blog-title:hover {
+    font-size: 90px;
+}
+
+.blog-description {
+    font-size: 20px;
+    color: #999;
+}
+
+.form-group {
+    padding: 0.5vh 0.5vw;
+}
+
+.blog-main {
+    width: 65vw;
+    font-size: 18px;
+    line-height: 1.5;
+    padding: 5vh 5vw;
+    background-color: #fff9f5a8;
+    margin-left: 5vw;
+    border-radius: 22px;
+    box-shadow: 0px 2px 16px 3px #ccc;
+}
+
+.homepage-img {
+    width: 100%;
+    max-height: 200px;
+    transform: scaleX(4);
+}
+
+/*Footer*/
+footer {
+    left: 0;
+    width: 100%;
+    background: #222;
+}
+
+    footer div {
+        display: table;
+        margin: 0 auto;
+        padding: 44px 0;
+        width: 940px;
+        color: #777;
+    }
+
+        footer div section {
+            display: table-cell;
+            width: 300px;
+        }
+
+        footer div #about, footer div #blogroll {
+            padding-right: 20px;
+        }
+
+footer {
+    color: #FFF;
+}
+
+    footer a {
+        color: #999;
+    }
+
+        footer a:hover {
+            color: #FFF;
+            text-decoration: none;
+        }
+
+    footer ul {
+        margin: 0 0 0 40px;
+        list-style: square;
+        color: #565656;
+    }
+
+        footer ul li a {
+            display: block;
+        }
+
+.blog-footer {
+    padding: 10px 0;
+    color: #999;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-top: 1px solid #e5e5e5;
+}
+
+.blog-footer p:last-child {
+    margin-bottom: 0;
+}
+
+/*Nav*/
+.blog-app-bar {
+    width: 100%;
+    color: white !important;
+    -webkit-box-shadow: inset 0 -2px 5px rgba(0,0,0,.1);
+    box-shadow: 7px 11px 20px 0px rgb(84, 84, 84);
+    position: sticky;
+    z-index: 9999;
+}
+
+nav ul {
+    margin: 0 auto;
+    list-style: none;
+}
+
+nav ul li {
+    float: left;
+}
+
+.nav-options {
+    font-size: 24px !important;
+    font-family: PoorStory;
+    text-align: center;
+    text-decoration: none;
+    padding: 0;
+    height: 100%;
+    line-height: 44px;
+    padding: 0 16px !important;
+}
+
+nav ul li a {
+    display: block;
+    margin-right: 20px;
+    width: 140px;
+    color: black;
+    font-size: 24px;
+    line-height: 44px;
+    font-family: PoorStory;
+    text-align: center;
+    text-decoration: none;
+}
+
+nav ul li a:hover {
+    color: black;
+}
+
+nav ul li.selected a {
+    color: deeppink;
+}
+
+nav ul li.subscribe a {
+    margin-left: 22px;
+    padding-left: 33px;
+    text-align: left;
+}
+
+.nav-link {
+    position: relative;
+    font-weight: 500;
+    color: yellow;
+}
+
+/*Aside*/
+aside {
+    display: table-cell;
+    width: 300px;
+}
+
+
+aside section {
+    margin: 22px 0 0 22px;
+    padding: 11px 22px;
+    background-color: #f9e6da;
+    -moz-border-radius: 11px;
+    -webkit-border-radius: 11px;
+}
+
+aside section ul {
+    margin: 0 0 0 22px;
+    list-style: none;
+}
+
+aside section ul li a {
+    display: block;
+    text-decoration: none;
+    color: #000;
+}
+
+aside section ul li a:hover {
+    text-decoration: underline;
+}
+
+.list-aside {
+    margin-left: 15px;
+    padding: 0;
+}
+
+    .list-aside > li {
+        color: #43484c;
+        font-size: 18px;
+        font-weight: normal;
+        font-family: 'Hanzo Font';
+    }
+
+.side-bar-section {
+    margin-left: 0;
+}
+
+.side-bar-section h3{
+    margin-top: 0;
+}
+
+aside.col-sm-2 {
+    padding: 5vh 0vw
+}
+
+.aside {
+    float: left;
+    left: 0;
+    display: flex;
+}
+
+.sidebar-module {
+    padding: 15px;
+    background-color: #fff9f5a8;
+    border-radius: 22px;
+    box-shadow: 0px 2px 16px 3px #ccc;
+    z-index: 999;
+    max-width: 18vw
+}
+
+.sidebar-module-inset {
+    padding: 15px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+}
+
+.sidebar-module-inset p:last-child,
+.sidebar-module-inset ul:last-child,
+.sidebar-module-inset ol:last-child {
+    margin-bottom: 0;
+}
+
+.not {
+    color: darkred;
+}
+
+/*Home*/
+#multicolumns {
+    width: 100% !important;
+}
+
+mul-col-blue container text-center {
+    width: 100% !important;
+    column-count: 2;
+    column-gap: 40px;
+    column-rule-color: lightblue;
+    column-rule-width: 1px;
+    column-rule-style: solid;
+    column-width: 400px;
+}
+
+.mul-col-blue {
+    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2;
+    -webkit-column-gap: 40px; /* Chrome, Safari, Opera */
+    -moz-column-gap: 40px; /* Firefox */
+    column-gap: 40px;
+    -webkit-column-rule-style: solid; /* Chrome, Safari, Opera */
+    -moz-column-rule-style: solid; /* Firefox */
+    column-rule-style: solid;
+    -webkit-column-rule-width: 1px; /* Chrome, Safari, Opera */
+    -moz-column-rule-width: 1px; /* Firefox */
+    column-rule-width: 1px;
+    -webkit-column-rule-color: lightblue; /* Chrome, Safari, Opera */
+    -moz-column-rule-color: lightblue; /* Firefox */
+    column-rule-color: lightblue;
+    margin: auto;
+    width: 65%;
+    padding: 10px;
 }

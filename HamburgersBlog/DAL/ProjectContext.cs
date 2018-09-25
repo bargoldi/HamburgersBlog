@@ -11,9 +11,11 @@ namespace HamburgersBlog.DAL
     public class ProjectContext : DbContext
     {
         public ProjectContext() : base("ProjectContext") { }
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+        public DbSet<Map> Maps { get; set; }
         public DbSet<Restaurant> Restaurants { get; set; }
         public DbSet<Hamburger> Hamburgers { get; set; }
-        public DbSet<SideDish> SideDishes { get; set; }
         public DbSet<Review> Reviews { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

@@ -181,35 +181,6 @@ namespace HamburgersBlog.DAL
             restaurants.ForEach(r => context.Restaurants.Add(r));
             context.SaveChanges();
 
-            var sideDishes = new List<SideDish>
-            {
-                new SideDish
-                {
-                    SideDishID=1,
-                    Name="Chips",
-                    Description="a regular chips",
-                    Price=12,
-                },
-                new SideDish
-                {
-                    SideDishID=2,
-                    Name="Sweet Potato Chips",
-                    Description="chips that made from sweet potato",
-                    Price=15,
-                },
-                new SideDish
-                {
-                    SideDishID=3,
-                    Name="Rice",
-                    Description="white rice",
-                    Price=18,
-                },
-            };
-
-            sideDishes.ForEach(s => context.SideDishes.Add(s));
-            context.SaveChanges();
-
-
             var reviews = new List<Review>
             {
                 new Review
@@ -247,7 +218,69 @@ namespace HamburgersBlog.DAL
             };
 
             reviews.ForEach(r => context.Reviews.Add(r));
-            context.SaveChanges();        
+            context.SaveChanges();
+
+            var posts = new List<Post>
+            {
+                new Post {
+                    PostID = 1,
+                    Title = "Why Vetrina is the BEST Burger Ever Made!",
+                    AuthorName = "Bar Goldinfeld",
+                    Date=new DateTime(2018, 5, 9),
+                    Content="Cuz. it's made with love!",
+                    RestaurantID=restaurants[0].RestaurantID,
+                },
+                new Post  {
+                    PostID = 2,
+                    Title = "I Wish I Had My Own Restaurant - Just Like Kabana",
+                    AuthorName="Ron Badur",
+                    Date=new DateTime(2018,5,2),
+                    Content="Courage is needed for that mission! There are so many unsuccessful Burgers",
+                    RestaurantID=restaurants[7].RestaurantID,
+                },
+                new Post  {
+                    PostID = 3,
+                    Title = "The Truth About Susu and Son",
+                    AuthorName="Roee Rokah",
+                    Date=new DateTime(2018,4,30),
+                    Content="Jesus so much HYPE around it, but let's face it - it's a bad Burger.",
+                    RestaurantID=restaurants[1].RestaurantID,
+                }
+            };
+
+            posts.ForEach(p => context.Posts.Add(p));
+            context.SaveChanges();
+
+            var comments = new List<Comment>
+            {
+                new Comment
+                {
+                    CommentID=1,
+                    PostID=1,
+                    Title="Dam Right!",
+                    AuthorName="IDontLoveBurgersXD",
+                    Content="You just can't be wrong about that Burger",
+                },
+                new Comment
+                {
+                    CommentID=2,
+                    PostID=1,
+                    Title="You are wrong!",
+                    AuthorName="HATERSGONNAHATE",
+                    Content="Haters Gonna HATE!",
+                },
+                new Comment
+                {
+                    CommentID=3,
+                    PostID=2,
+                    Title="Kabana?!",
+                    AuthorName="I'm a Pro XD",
+                    Content="As a pro, you don't wanna learn from that shitty place ;)",
+                },
+            };
+
+            comments.ForEach(c => context.Comments.Add(c));
+            context.SaveChanges();
         }
     }
 }

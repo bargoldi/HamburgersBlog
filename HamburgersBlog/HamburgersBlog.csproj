@@ -160,10 +160,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Hamburger.cs" />
+    <Compile Include="Models\Map.cs" />
+    <Compile Include="Models\Post.cs" />
     <Compile Include="Models\Restaurant.cs" />
     <Compile Include="Models\Review.cs" />
-    <Compile Include="Models\SideDish.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -208,6 +210,8 @@
     <Content Include="fonts\PoorStory-Regular.ttf" />
     <Content Include="package.json" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\d3.js" />
+    <Content Include="Scripts\d3.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -233,10 +237,11 @@
     <Content Include="Views\Restaurants\Index.cshtml" />
     <Content Include="Views\Restaurants\Locations.cshtml" />
     <Content Include="Views\Restaurants\Details.cshtml" />
+    <Content Include="Views\Home\GroupByRestaurant.cshtml" />
+    <Content Include="Views\Home\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Restaurant\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

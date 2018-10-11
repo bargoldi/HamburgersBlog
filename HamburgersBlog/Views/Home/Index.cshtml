@@ -1,4 +1,6 @@
-﻿<div id="multicolumns" class="mul-col-blue container text-center">
+﻿@model IEnumerable<HamburgersBlog.Models.Post>
+
+<div id="multicolumns" class="mul-col-blue container text-center">
 
     <section id="videoContainer">
         Teaser
@@ -28,5 +30,57 @@
             <div class="alert alert-success">Like @Html.Raw(favRestaurantName)? @Html.ActionLink("click", "Filter", new { restaurantName = favRestaurantName }) for more</div>
         }
     }
+
+    @using (Html.BeginForm("Filter", "Home", FormMethod.Post, new { @class = "form-inline" }))
+    {
+        <h3>Filter Posts by:</h3>
+        <div class="form-group">
+            @Html.DropDownList("area", EnumHelper.GetSelectList(typeof(HamburgersBlog.Models.Area)), "Choose Area...", new { @class = "form-control" })
+        </div>
+
+        <div class="form-group">
+            @Html.TextBox("restaurantName", "", new { @class = "form-control", placeholder = "Restaurant Name" })
+        </div>
+
+        <div class="form-group">
+            @Html.TextBox("authorName", "", new { @class = "form-control", placeholder = "Author Name" })
+        </div>
+
+        <input class="btn btn-search-posts" type="submit" value="Search" />
+    }
+</div>
+
+<h2>Posts</h2>
+<hr />
+
+@foreach (var item in Model)
+{
+    <div class="blog-post">
+        <p class="blog-post-title">@Html.ActionLink(item.Title, "../Posts/Details", new { id = item.PostID }, new { @style = "text-decoration:none; color: black;" }) </p>
+
+        <div class="blog-post-meta">@Convert.ToString(string.Format("{0:dd/MM/yyyy}", item.Date))</div>
+        <p>@Html.DisplayFor(modelItem => item.Content)</p>
+
+        <p class="blockquote-footer">@Html.DisplayFor(modelItem => item.AuthorName), <cite>@Html.DisplayFor(modelItem => item.Restaurant.Name)</cite></p>
+        @{ if (Request.IsAuthenticated)
+            {
+                <div>
+                    @Html.ActionLink("Edit", "../Posts/Edit", new { id = item.PostID }) |
+                    @Html.ActionLink("Delete", "../Posts/Delete", new { id = item.PostID })
+                </div>
+            }
+        }
+    </div>
+}
+
+<div class="container row">
+    <div class="list-inline buttons">
+        @using (Html.BeginForm("GroupByRestaurant", "Home"))
+        {
+            <a class="btn btn-lg add-review" href="@Url.Action("../Posts/Create")" role="button">Add Post</a>
+            <input class="btn btn-lg btn-stats" type="submit" value="Posts Stats" />
+        }
+
+    </div>
 </div>
 

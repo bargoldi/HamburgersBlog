@@ -1,0 +1,95 @@
+﻿@model IEnumerable<HamburgersBlog.Models.GroupByRestaurantModel>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/d3")
+<head>
+    <style>
+        .axis {
+            font: 10px sans-serif;
+        }
+
+        .bar {
+            fill: steelblue;
+        }
+
+            .bar:hover {
+                fill: brown;
+            }
+
+        .axis path,
+        .axis line {
+            fill: none;
+            stroke: #000;
+            shape-rendering: crispEdges;
+        }
+    </style>
+</head>
+<script type="text/javascript">
+    $(document).ready(function () {
+        var svg = d3.select("svg"),
+            margin = { top: 20, right: 20, bottom: 30, left: 40 },
+            width = +svg.attr("width") - margin.left - margin.right,
+            height = +svg.attr("height") - margin.top - margin.bottom;
+
+        var x = d3.scaleBand().rangeRound([0, width]).padding(0.1),
+            y = d3.scaleLinear().rangeRound([height, 0]);
+
+        var g = svg.append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        d3.json("/Home/GroupByRestaurantData", function (data) {
+            x.domain(data.map(function (d) { return d.RestaurantName; }));
+            y.domain([0, d3.max(data, function (d) { return d.TotalPosts; })]);
+
+            g.append("g")
+                .attr("class", "axis axis--x")
+                .attr("transform", "translate(0," + height + ")")
+                .call(d3.axisBottom(x));
+
+            g.append("g")
+                .attr("class", "axis axis--y")
+                .call(d3.axisLeft(y).ticks(d3.max(data, function (d) { return d.TotalPosts; })))
+                .append("text")
+                .attr("transform", "rotate(-90)")
+                .attr("y", 6)
+                .attr("dy", "0.71em")
+                .attr("text-anchor", "end")
+                .text("Frequency");
+
+            g.selectAll(".bar")
+                .data(data)
+                .enter().append("rect")
+                .attr("class", "bar")
+                .attr("x", function (d) { return x(d.RestaurantName); })
+                .attr("y", function (d) { return y(d.TotalPosts); })
+                .attr("width", x.bandwidth())
+                .attr("height", function (d) { return height - y(d.TotalPosts); });
+
+        })
+
+    })
+</script>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.RestaurantName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalPosts)
+        </th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.RestaurantName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalPosts)
+            </td>
+        </tr>
+    }
+</table>
+<br />
+<u><b>Statistics:</b></u>
+<br />
+<svg width="480" height="250"></svg>

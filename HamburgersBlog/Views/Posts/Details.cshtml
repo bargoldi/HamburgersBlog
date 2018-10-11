@@ -1,0 +1,45 @@
+﻿@model HamburgersBlog.Models.Post
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="blog-post">
+    <p class="blog-post-title">@Html.DisplayFor(model => model.Title) </p>
+
+    <div class="blog-post-meta">@Html.DisplayFor(model => model.Date)</div>
+    <p>@Html.DisplayFor(model => model.Content)</p>
+
+    <a id="morePosts">Want more posts of @Html.DisplayFor(model => model.Restaurant.Name)? click here</a>
+    <footer class="blockquote-footer">@Html.DisplayFor(model => model.AuthorName), <cite>@Html.DisplayFor(model => model.Restaurant.Name)</cite></footer>
+</div>
+
+<h2>Comments</h2>
+<hr />
+<div>
+    <ul class="comments-list col-md-8" id="comment-list">
+        @foreach (var item in Model.Comments)
+        {
+            <li class="blog-comment">
+                <p class="meta"><strong>@item.AuthorName</strong></p>
+                <p>
+                    <strong>@item.Title</strong>
+                    <br />
+                    <span>@item.Content</span>
+                </p>
+                @{ if (Request.IsAuthenticated)
+                    {
+                        <div>
+                            @Html.ActionLink("Edit", "../Comments/Edit", new { id = item.CommentID }) |
+                            @Html.ActionLink("Delete", "../Comments/Delete", new { id = item.CommentID })
+                        </div>
+                    }
+                }
+            </li>
+        }
+    </ul>
+</div>
+<div class="buttons-container">
+    <a class="btn btn-lg add-review" href="@Url.Action("../Comments/Create", "Add", new { PostID = Model.PostID })" role="button">Add Comment</a>
+    <a class="btn btn-lg add-review" href="@Url.Action("../Home/Index")">Back</a>
+</div>
+

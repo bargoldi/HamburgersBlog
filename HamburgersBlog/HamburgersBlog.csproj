@@ -240,6 +240,10 @@
     <Content Include="Views\Restaurants\Details.cshtml" />
     <Content Include="Views\Home\GroupByRestaurant.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Posts\Create.cshtml" />
+    <Content Include="Views\Posts\Delete.cshtml" />
+    <Content Include="Views\Posts\Details.cshtml" />
+    <Content Include="Views\Posts\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

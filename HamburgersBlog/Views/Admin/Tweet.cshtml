@@ -1,0 +1,75 @@
+﻿@Scripts.Render("~/bundles/jquery")
+<script type="text/javascript">
+	$(document).ready(function () {
+		$("#btnTweet").click(function (e) {
+			e.preventDefault();
+
+			var text = document.getElementById('tweetText').value;
+
+			if (text == '') {
+				alert('Please fill all fields');
+				return;
+			}
+
+			var token = $('[name=__RequestVerificationToken]').val();
+			var tweetData = {
+				text: text
+			};
+			tweetData['__RequestVerificationToken'] = token;
+
+			$.ajax({
+				url: "/Twitter/TweetUpdate",
+				type: "POST",
+				data: tweetData,
+				success: function (response) {
+					if (response.error) {
+						$("#success-msg").text("")
+						$("#error-msg").text(response.error)
+						return;
+					}
+
+					$("#error-msg").text("")
+					$("#tweetLink").text("Click here to watch the Tweet!")
+					document.getElementById("tweetLink").href = response.url;
+
+
+				},
+				error: function (response) {
+					alert('Error was occured, please try again later', response)
+				}
+
+			});
+
+		});
+	});
+</script>
+@{
+    ViewBag.Title = "TweetPage";
+}
+<div class="form-horizontal">
+</div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form">
+        <div>
+            <textarea id="tweetText" class="col-md-4 col-lg-offset-1" type="text" placeholder="Text to tweet"></textarea>
+        </div>
+        <div>
+            <input class="btn btn-search-posts" type="submit" id="btnTweet" value="Tweet" />
+        </div>
+    </div>
+
+
+
+    <div class="container">
+        <div id="error-msg" class="alert-danger"></div>
+        <div id="success-msg" class="alert-success"></div>
+    </div>
+    <a id="tweetLink"></a>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

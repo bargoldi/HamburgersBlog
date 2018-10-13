@@ -23,11 +23,30 @@
         <div class="blog-app-bar">
             <div class="container">
                 <nav class="nav">
-                    <!-- Navigation -->
+                    <!-- Navigation -->					
                     <ul>
                         <li class="nav-link">@Html.ActionLink("Home", "Index", "Home")</li>
                         <li class="nav-link">@Html.ActionLink("Restaurants", "Index", "Restaurants")</li>
-                        <li class="nav-link">@Html.ActionLink("Locations", "Locations", "Restaurants")</li>                        
+                        <li class="nav-link">@Html.ActionLink("Locations", "Locations", "Restaurants")</li>   
+						@{
+                            if (!Request.IsAuthenticated)
+                            {
+                                <li class="nav-link">@Html.ActionLink("Admin", "Login", "Admin")</li>
+                            }
+                            else
+                            {
+                                <li class="nav-link dropdown">
+                                    <button class="dropbtn nav-options">Options</button>
+                                    <ul class="dropdown-content">
+                                        <li class="nav-link">@Html.ActionLink("Comments", "Index", "Comments")</li>
+                                        <li class="nav-link">@Html.ActionLink("Tweet", "TweetPage", "Twitter")</li>
+                                        <li class="nav-link">@Html.ActionLink("Statistics", "GroupByArea", "Restaurants")</li>
+                                        <li class="nav-link">@Html.ActionLink("Logout", "Logout", "Admin")</li>
+                                    </ul>
+                                </li>
+
+                            }
+                        }						
                     </ul>
                 </nav>
             </div>

@@ -45,6 +45,28 @@ namespace HamburgersBlog.Controllers
             return View(restaurant);
         }
 
+		// GET: Restaurants/GroupByArea
+        [Authorize(Users = "Admin")]
+        public ActionResult GroupByArea()
+        {
+            var totalAreas = from restaurant in db.Restaurants
+                             group restaurant by restaurant.Area into g
+                             select new GroupByAreaModel() { Area = g.Key, TotalRestaurants = g.Sum(p => 1) };
+
+            return View(totalAreas.ToList());
+        }
+
+        [HttpGet]
+        [Authorize(Users = "Admin")]
+        public ActionResult GroupByAreaData()
+        {
+            var totalAreas = from restaurant in db.Restaurants
+                             group restaurant by restaurant.Area into g
+                             select new GroupByAreaModel() { Area = g.Key, TotalRestaurants = g.Sum(p => 1) };
+
+            return Json(totalAreas.ToList(), JsonRequestBehavior.AllowGet);
+        }
+		
         // POST: Restaurants/Filter
         public ActionResult Filter(string area, string restaurantName, int greaterRateThan)
         {

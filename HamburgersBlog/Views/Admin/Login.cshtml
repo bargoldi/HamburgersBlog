@@ -1,0 +1,67 @@
+﻿@Scripts.Render("~/bundles/jquery")
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#btnLogin").click(function (e) {
+            e.preventDefault();
+
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            if (username == '' || password == '') {
+                alert('Please fill all fields');
+                return;
+            }
+
+            var token = $('[name=__RequestVerificationToken]').val();
+            var userData = {
+                username: username,
+                password: password
+            };
+            userData['__RequestVerificationToken'] = token;
+
+            $.ajax({
+                url: "/Admin/Login",
+                type: "POST",
+                data: userData,
+                success: function (response) {
+                    if (response.error) {
+                        $("#success-msg").text("")
+                        $("#error-msg").text(response.error)
+                        return;
+                    }
+
+                    $("#error-msg").text("")
+                    $("#success-msg").text("You have been logged in, redirecting")
+
+                    setTimeout(function () {
+                        window.location.href = "/"
+                    }, 1200)
+                },
+                error: function (response) {
+                    alert('Error has occured, please try again later', response)
+                }
+
+            });
+
+        });
+    });
+</script>
+
+<div class="form-horizontal">
+</div>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-inline">
+        <input id="username" type="text" placeholder="Username" />
+        <input id="password" type="password" placeholder="Password" />
+        <input class="btn btn-search-posts" type="submit" id="btnLogin" value="Login" />
+    </div>
+
+    <div id="error-msg" class="alert-danger"></div>
+    <div id="success-msg" class="alert-success"></div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jquery")
+}

@@ -42,6 +42,8 @@ namespace HamburgersBlog.Controllers
                 return HttpNotFound();
             }
 
+            //RestaurantInterest.Instance.AddUserInterestInRestaurant(Request, Response, restaurant);
+
             return View(restaurant);
         }
 

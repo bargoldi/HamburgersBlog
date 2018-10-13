@@ -43,6 +43,8 @@ namespace HamburgersBlog.Controllers
                 db.Reviews.Add(review);
                 db.SaveChanges();
 
+                RestaurantInterest.Instance.AddUserInterestInRestaurant(Request, Response, review.RestaurantID, 3);
+
                 return RedirectToAction("../Restaurants/Details", new { id = review.RestaurantID });
             }
             return View(review);

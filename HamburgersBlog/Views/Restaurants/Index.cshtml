@@ -24,7 +24,7 @@
 
 <div class="container restaurants">
     <section class="cards">
-        @foreach (var item in Model.ToArray().OrderBy(r => -r.Rate))
+        @foreach (var item in Model.ToArray())
         {
             <article class="card card--1">
                 <div class="card__info-hover">

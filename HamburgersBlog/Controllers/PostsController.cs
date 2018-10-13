@@ -52,6 +52,8 @@ namespace HamburgersBlog.Controllers
             }
             Session["counterDictionary"] = counterDictionary;
 
+            RestaurantInterest.Instance.AddUserInterestInRestaurant(Request, Response, restaurantId, 1);
+
             return View(post);
         }
 
@@ -76,6 +78,9 @@ namespace HamburgersBlog.Controllers
             {
                 db.Posts.Add(post);
                 db.SaveChanges();
+
+                RestaurantInterest.Instance.AddUserInterestInRestaurant(Request, Response, post.RestaurantID, 5);
+
                 return RedirectToAction("../Home/Index");
             }
 

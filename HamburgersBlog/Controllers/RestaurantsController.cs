@@ -18,7 +18,13 @@ namespace HamburgersBlog.Controllers
         // GET: Restaurants
         public ActionResult Index()
         {
-            return View(db.Restaurants.ToList());
+            var restaurants = db.Restaurants;
+
+            IOrderedEnumerable<Restaurant> restaurantList =
+                restaurants.ToList().OrderByDescending(item => item.Rate).
+                    OrderByDescending(item => RestaurantInterest.Instance.getInterestInRestaurant(Request, Response, item.RestaurantID));
+
+            return View(restaurantList);
         }
 
         // GET: Restaurants/Locations
@@ -42,7 +48,7 @@ namespace HamburgersBlog.Controllers
                 return HttpNotFound();
             }
 
-            RestaurantInterest.Instance.AddUserInterestInRestaurant(Request, Response, restaurant);
+            RestaurantInterest.Instance.AddUserInterestInRestaurant(Request, Response, restaurant.RestaurantID, 1);
 
             return View(restaurant);
         }

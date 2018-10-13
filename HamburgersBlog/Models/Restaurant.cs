@@ -30,4 +30,10 @@ namespace HamburgersBlog.Models
         public virtual ICollection<Hamburger> Hamburgers { get; set; }
         public virtual ICollection<Review> Reviews { get; set; }
     }
+
+    public class GroupByAreaModel
+    {
+        public Area Area { get; set; }
+        public int TotalRestaurants { get; set; }
+    }
 }

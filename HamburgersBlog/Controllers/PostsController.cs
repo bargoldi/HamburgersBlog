@@ -82,7 +82,9 @@ namespace HamburgersBlog.Controllers
                 RestaurantInterest.Instance.AddUserInterestInRestaurant(Request, Response, post.RestaurantID, 5);
 
                 // Find from text if it's a positive review
-                bool isRecomended = RestuarantRecomandationByNLP.Instance.isPositiveReview(Request, Response, post.Title + post.Content);
+                bool isRecomended =
+                           RestuarantRecomandationByNLP.Instance.isPositiveReview(Request, Response, post.Title + " " + post.Content);
+
                 // Change restuarnt recomendation
                 SaveIsRecomendedForRestuarant(post.RestaurantID, isRecomended);
 
@@ -122,7 +124,9 @@ namespace HamburgersBlog.Controllers
                 db.SaveChanges();
 
                 // Find from text if it's a positive review
-                bool isRecomended = RestuarantRecomandationByNLP.Instance.isPositiveReview(Request, Response, post.Title + post.Content);
+                bool isRecomended =
+                    RestuarantRecomandationByNLP.Instance.isPositiveReview(Request, Response, post.Title + " " + post.Content);
+
                 // Change restuarnt recomendation
                 SaveIsRecomendedForRestuarant(post.RestaurantID, isRecomended);
 

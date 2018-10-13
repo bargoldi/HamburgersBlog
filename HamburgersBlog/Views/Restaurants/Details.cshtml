@@ -96,7 +96,7 @@
                 {
                     <img title="Close Parking Avilable" class="compatible-image" src="~/Media/images/parking.png" />
                 }
-                @if (@Model.IsRecommended)
+                @if (@Model.RecommendationScore > 0)
                 {
                     <img title="Recomended" class="compatible-image" src="~/Media/images/recomended.jpeg" />
                 }

@@ -83,7 +83,7 @@ namespace HamburgersBlog.Controllers
 
                 // Find from text if it's a positive review
                 bool isRecomended =
-                           RestuarantRecomandationByNLP.Instance.isPositiveReview(Request, Response, post.Title + " " + post.Content);
+                           RestuarantRecomandationByNLP.Instance.IsPositiveReview(Request, Response, post.Title + " " + post.Content);
 
                 // Change restuarnt recomendation
                 SaveIsRecomendedForRestuarant(post.RestaurantID, isRecomended);
@@ -125,7 +125,7 @@ namespace HamburgersBlog.Controllers
 
                 // Find from text if it's a positive review
                 bool isRecomended =
-                    RestuarantRecomandationByNLP.Instance.isPositiveReview(Request, Response, post.Title + " " + post.Content);
+                    RestuarantRecomandationByNLP.Instance.IsPositiveReview(Request, Response, post.Title + " " + post.Content);
 
                 // Change restuarnt recomendation
                 SaveIsRecomendedForRestuarant(post.RestaurantID, isRecomended);
@@ -195,7 +195,7 @@ namespace HamburgersBlog.Controllers
         private void SaveIsRecomendedForRestuarant(int restId, bool isRecomended)
         {
             Restaurant restaurant = db.Restaurants.Find(restId);
-            restaurant.IsRecommended = isRecomended;
+            restaurant.RecommendationScore += isRecomended ? 1 : -1;
             db.Entry(restaurant).State = EntityState.Modified;
             db.SaveChanges();
         }

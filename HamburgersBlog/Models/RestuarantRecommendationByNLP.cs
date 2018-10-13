@@ -26,7 +26,7 @@ namespace HamburgersBlog.Models
         }
         private RestuarantRecomandationByNLP()
         {
-            const string dataFilePath = @"D:\Temp\goodOrBad.csv";
+            string dataFilePath = HttpContext.Current.Server.MapPath("~/App_Data/TrainingForIsPositiveAlgo.csv");
             var dataTable = DataAccess.DataTable.New.ReadCsv(dataFilePath);
             List<string> x = dataTable.Rows.Select(row => row["Text"]).ToList();
             double[] y = dataTable.Rows.Select(row => double.Parse(row["IsPositive"]))
@@ -38,7 +38,7 @@ namespace HamburgersBlog.Models
             model = new C_SVC(problem, KernelHelper.LinearKernel(), C);
             _predictionDictionary = new Dictionary<int, string> { { -1, "Bad" }, { 1, "Good" } };
         }
-        internal bool isPositiveReview(HttpRequestBase request, HttpResponseBase response, string review)
+        internal bool IsPositiveReview(HttpRequestBase request, HttpResponseBase response, string review)
         {
             var newX = TextClassificationProblemBuilder.CreateNode(review, vocabulary);
             var predictedY = model.Predict(newX);

@@ -27,7 +27,7 @@ namespace HamburgersBlog.Models
         {
         }
 
-        internal int getInterestInRestaurant(HttpRequestBase request, HttpResponseBase response, int restaurantID)
+        internal int GetInterestInRestaurant(HttpRequestBase request, HttpResponseBase response, int restaurantID)
         {
             Hashtable restaurantInterest = null;
             int interestInRestaurant = 0;
@@ -83,8 +83,6 @@ namespace HamburgersBlog.Models
 
             // Add the cookie.
             response.Cookies.Add(myCookie);
-
-            response.Write("<p> The cookie has been written.");
         }
 
         public string SerializeToBase64String(object obj)

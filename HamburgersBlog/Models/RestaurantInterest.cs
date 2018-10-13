@@ -22,7 +22,8 @@ namespace HamburgersBlog.Models
         private RestaurantInterest()
         {
         }
-        public void AddUserInterestInRestaurant(HttpRequestBase request, HttpResponseBase response, Restaurant restaurant)
+        
+        public void AddUserInterestInRestaurant(HttpRequestBase request, HttpResponseBase Response, Restaurant restaurant)
         {
             Hashtable restaurantInterest = null;
             // If there is a cookie already, use it
@@ -54,6 +55,7 @@ namespace HamburgersBlog.Models
             Response.Cookies.Add(myCookie);
             Response.Write("<p> The cookie has been written.");
         }
+
         public string SerializeToBase64String(object obj)
         {
             MemoryStream memoryStream = new MemoryStream();

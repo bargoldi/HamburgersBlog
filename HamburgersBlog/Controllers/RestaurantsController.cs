@@ -20,9 +20,11 @@ namespace HamburgersBlog.Controllers
         {
             var restaurants = db.Restaurants;
 
-            IOrderedEnumerable<Restaurant> restaurantList =
-                restaurants.ToList().OrderByDescending(item => item.Rate).
-                    OrderByDescending(item => RestaurantInterest.Instance.getInterestInRestaurant(Request, Response, item.RestaurantID));
+            IOrderedEnumerable<Restaurant> restaurantList = 
+                restaurants.ToList().
+                    OrderByDescending(item => item.Rate).
+                    OrderByDescending(item => RestaurantInterest.Instance.getInterestInRestaurant(Request, Response, item.RestaurantID)).
+                    OrderByDescending(item => item.IsRecommended);
 
             return View(restaurantList);
         }

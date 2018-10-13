@@ -23,6 +23,7 @@ namespace HamburgersBlog.Models
         public double Rate { get; set; }
         [Required]
         public Area Area { get; set; }
+        public bool IsRecommended { get; set; }
         public bool IsVeganFriendly { get; set; }
         public bool IsKosher { get; set; }
         public bool IsParkingAvailable { get; set; }

@@ -56,6 +56,10 @@
                             {
                                 <img title="Close Parking Avilable" class="compatible-image" src="~/Media/images/parking.png" />
                             }
+                            @if (item.IsRecommended)
+                            {
+                                <img title="Recomended" class="compatible-image" src="~/Media/images/recomended.jpeg" />
+                            }
                         </div>
                     </h3>
                     <span class="card__by">rate <a href="#" class="card__author" title="author">@Html.DisplayFor(modelItem => item.Rate)</a></span>

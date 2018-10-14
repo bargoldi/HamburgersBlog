@@ -70,12 +70,11 @@ namespace HamburgersBlog.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PostID,Title,AuthorName,RestaurantID,Content")] Post post)
+        public ActionResult Create([Bind(Include = "PostID,Title,AuthorName,RestaurantID,Restaurant,Date,Content")] Post post)
         {
-            post.Date = DateTime.Now;
-
             if (ModelState.IsValid)
             {
+                post.Date = DateTime.Now;
                 db.Posts.Add(post);
                 db.SaveChanges();
 
@@ -91,6 +90,8 @@ namespace HamburgersBlog.Controllers
                 return RedirectToAction("../Home/Index");
             }
 
+            var allRestaurants = db.Restaurants;
+            this.ViewData["restaurantsSelectable"] = (IEnumerable<HamburgersBlog.Models.Restaurant>)allRestaurants;
             return View(post);
         }
 

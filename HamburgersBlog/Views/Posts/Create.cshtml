@@ -26,11 +26,12 @@
         </div>
         <div class="form-group">
             <label class="control-label col-md-2" for="Restaurant">Restaurant</label>
-            <div class="col-md-10"> 
+            <div class="col-md-10">
                 @Html.DropDownList("RestaurantID",
-                    new SelectList((IEnumerable<HamburgersBlog.Models.Restaurant>)ViewData["restaurantsSelectable"], "RestaurantID", "Name"), new { @class = "btn btn-default" })
-
-                @Html.ValidationMessageFor(model => model.Restaurant, "", new { @class = "text-danger" })
+                                   new SelectList((IEnumerable<HamburgersBlog.Models.Restaurant>)ViewData["restaurantsSelectable"],
+                                                  "RestaurantID",
+                                                  "Name"), new { @class = "btn btn-default" })
+                                   @Html.ValidationMessageFor(model => model.Restaurant, "", new { @class = "text-danger" })
             </div>
         </div>
         <div class="form-group">

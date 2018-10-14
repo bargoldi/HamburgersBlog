@@ -673,3 +673,8 @@ mul-col-blue container text-center {
     display: flex;
     justify-content: center;
 }
+
+/*Comments*/
+.comments-list {
+    float: none;
+}

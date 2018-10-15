@@ -1,7 +1,7 @@
 ﻿@model HamburgersBlog.Models.Review
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Reviews Delete";
 }
 
 <h2>Delete</h2>
@@ -41,7 +41,7 @@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Delete Review" class="btn btn-lg add-review" />
-                <a class="btn btn-lg add-review" href="@Url.Action("../Home/Index")">Back</a>
+                <a class="btn btn-lg add-review" onclick="window.history.back()">Back</a>
             </div>
         </div>
     }

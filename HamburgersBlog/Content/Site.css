@@ -9,11 +9,6 @@
     src: url('../fonts/PoorStory-Regular.ttf') format('truetype');
 }
 
-@font-face {
-    font-family: 'Hanzo Font';
-    src: url('../media/fonts/Roboto-Medium.ttf') format('truetype');
-}
-
 /*Shared*/
 h1.blog-title {
     font-family: 'Monoton';
